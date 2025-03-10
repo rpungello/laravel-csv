@@ -3,6 +3,7 @@
 namespace Rpungello\LaravelCsv\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Maatwebsite\Excel\Files\TemporaryFileFactory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Rpungello\LaravelCsv\LaravelCsvServiceProvider;
 
@@ -15,6 +16,13 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Rpungello\\LaravelCsv\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+        $this->app->bind(TemporaryFileFactory::class, function () {
+            return new TemporaryFileFactory(
+                config('excel.temporary_files.local_path', config('excel.exports.temp_path', storage_path('framework/laravel-excel'))),
+                config('excel.temporary_files.remote_disk')
+            );
+        });
     }
 
     protected function getPackageProviders($app)

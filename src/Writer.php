@@ -10,11 +10,9 @@ use Maatwebsite\Excel\Files\TemporaryFileFactory;
 
 class Writer
 {
-    protected TemporaryFileFactory $temporaryFileFactory;
 
-    public function __construct()
+    public function __construct(protected TemporaryFileFactory $temporaryFileFactory)
     {
-        $this->temporaryFileFactory = new TemporaryFileFactory(sys_get_temp_dir());
     }
 
     public function export($export): TemporaryFile
