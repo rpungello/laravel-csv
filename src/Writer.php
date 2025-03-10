@@ -10,10 +10,7 @@ use Maatwebsite\Excel\Files\TemporaryFileFactory;
 
 class Writer
 {
-
-    public function __construct(protected TemporaryFileFactory $temporaryFileFactory)
-    {
-    }
+    public function __construct(protected TemporaryFileFactory $temporaryFileFactory) {}
 
     public function export($export): TemporaryFile
     {

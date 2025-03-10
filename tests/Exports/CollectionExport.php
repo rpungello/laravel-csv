@@ -7,9 +7,8 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 
 class CollectionExport implements FromCollection
 {
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function collection(): Collection
     {

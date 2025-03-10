@@ -16,7 +16,7 @@ it('can export from arrays', function () {
 });
 
 it('can export from collections', function () {
-    $export = new CollectionExport();
+    $export = new CollectionExport;
     $tempFile = LaravelCsv::export($export);
     $results = array_map('str_getcsv', file($tempFile->getLocalPath()));
     expect($results)->toBeArray()
