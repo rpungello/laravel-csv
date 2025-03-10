@@ -13,7 +13,6 @@ class CollectionExport implements FromCollection
     public function collection(): Collection
     {
         return collect([
-            ['Column 1', 'Column 2'],
             ['Data 1', 'Data 2'],
             ['Data 3', 'Data 4'],
         ]);
