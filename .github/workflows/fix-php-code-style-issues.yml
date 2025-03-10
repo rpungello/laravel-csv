@@ -21,9 +21,6 @@ jobs:
 
       - name: Fix PHP code style issues
         uses: aglipanci/laravel-pint-action@2.5
-        with:
-          preset: laravel
-          useComposer: true
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
