@@ -16,7 +16,7 @@ class ArrayExportWithMapping implements FromArray, WithMapping
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function map($row): array
     {
