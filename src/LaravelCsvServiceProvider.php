@@ -4,7 +4,6 @@ namespace Rpungello\LaravelCsv;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Rpungello\LaravelCsv\Commands\LaravelCsvCommand;
 
 class LaravelCsvServiceProvider extends PackageServiceProvider
 {
@@ -15,11 +14,6 @@ class LaravelCsvServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package
-            ->name('laravel-csv')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_csv_table')
-            ->hasCommand(LaravelCsvCommand::class);
+        $package->name('laravel-csv');
     }
 }
