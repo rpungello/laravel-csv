@@ -23,6 +23,12 @@ class LaravelCsv
         return $exported;
     }
 
+    /**
+     * Exports the given export and stores it in a temporary local file.
+     *
+     * @param $export
+     * @return TemporaryFile
+     */
     public function export($export): TemporaryFile
     {
         return $this->writer->export($export);
