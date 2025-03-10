@@ -37,6 +37,7 @@ class Writer
         }
 
         fclose($fh);
+
         return $temporaryFile;
     }
 }

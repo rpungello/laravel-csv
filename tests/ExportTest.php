@@ -4,7 +4,7 @@ use Rpungello\LaravelCsv\Facades\LaravelCsv;
 use Rpungello\LaravelCsv\Tests\Exports\ArrayExport;
 
 it('can export from arrays', function () {
-    $export = new ArrayExport();
+    $export = new ArrayExport;
     $tempFile = LaravelCsv::export($export);
     $results = array_map('str_getcsv', file($tempFile->getLocalPath()));
     expect($results)->toBeArray()

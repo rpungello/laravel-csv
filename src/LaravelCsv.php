@@ -7,9 +7,7 @@ use Maatwebsite\Excel\Files\TemporaryFile;
 
 class LaravelCsv
 {
-    public function __construct(protected Writer $writer, protected Filesystem $filesystem)
-    {
-    }
+    public function __construct(protected Writer $writer, protected Filesystem $filesystem) {}
 
     public function store($export, string $filePath, ?string $diskName = null, array $diskOptions = []): int
     {

@@ -6,9 +6,8 @@ use Maatwebsite\Excel\Concerns\FromArray;
 
 class ArrayExport implements FromArray
 {
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function array(): array
     {
