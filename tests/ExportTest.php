@@ -6,6 +6,7 @@ use Rpungello\LaravelCsv\Tests\Exports\ArrayExportWithHeadings;
 use Rpungello\LaravelCsv\Tests\Exports\ArrayExportWithMapping;
 use Rpungello\LaravelCsv\Tests\Exports\CollectionExport;
 use Rpungello\LaravelCsv\Tests\Exports\CollectionExportWithHeadings;
+use Rpungello\LaravelCsv\Tests\Exports\NestedArrayExport;
 
 it('can export from arrays', function () {
     $export = new ArrayExport;
@@ -57,4 +58,15 @@ it('can export from arrays with mapping', function () {
         ->and($results)->toHaveCount(2)
         ->and($results[0])->toBe(['Data 1', '5.5'])
         ->and($results[1])->toBe(['Data 3', '7.5']);
+});
+
+it('can export from models that produce multiple rows with mapping', function () {
+    $export = new NestedArrayExport;
+    $tempFile = LaravelCsv::export($export);
+    $results = array_map('str_getcsv', file($tempFile->getLocalPath()));
+    expect($results)->toBeArray()
+        ->and($results)->toHaveCount(3)
+        ->and($results[0])->toBe(['1234', 'line 1'])
+        ->and($results[1])->toBe(['1234', 'line 2'])
+        ->and($results[2])->toBe(['1234', 'line 3']);
 });

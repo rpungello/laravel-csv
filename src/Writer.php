@@ -29,18 +29,37 @@ class Writer
         }
 
         if ($export instanceof FromQuery) {
-            $export->query()->each(fn ($row) => fputcsv($fh, $this->getRowAsArray($export, $row)));
+            $export->query()->each(fn ($row) => $this->writeRow($export, $fh, $row));
         } elseif ($export instanceof FromArray) {
             foreach ($export->array() as $row) {
-                fputcsv($fh, $this->getRowAsArray($export, $row));
+                $this->writeRow($export, $fh, $row);
             }
         } elseif ($export instanceof FromCollection) {
-            $export->collection()->each(fn ($row) => fputcsv($fh, $this->getRowAsArray($export, $row)));
+            $export->collection()->each(fn ($row) => $this->writeRow($export, $fh, $row));
         }
 
         fclose($fh);
 
         return $temporaryFile;
+    }
+
+    /**
+     * @param $export
+     * @param resource $fh
+     * @param mixed $row
+     * @return void
+     */
+    private function writeRow($export, $fh, mixed $row): void
+    {
+        $array = $this->getRowAsArray($export, $row);
+
+        if ($this->isNestedArray($array)) {
+            foreach ($array as $nestedRow) {
+                fputcsv($fh, $nestedRow);
+            }
+        } else {
+            fputcsv($fh, $array);
+        }
     }
 
     private function getRowAsArray($export, $row): array
@@ -52,5 +71,10 @@ class Writer
         } else {
             return (array) $row;
         }
+    }
+
+    private function isNestedArray(array $array): bool
+    {
+        return is_array($array[0] ?? null);
     }
 }
