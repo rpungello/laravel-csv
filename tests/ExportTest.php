@@ -27,7 +27,7 @@ it('can export from collections', function () {
 });
 
 it('can export from arrays with headings', function () {
-    $export = new ArrayExportWithHeadings();
+    $export = new ArrayExportWithHeadings;
     $tempFile = LaravelCsv::export($export);
     $results = array_map('str_getcsv', file($tempFile->getLocalPath()));
     expect($results)->toBeArray()
@@ -38,7 +38,7 @@ it('can export from arrays with headings', function () {
 });
 
 it('can export from collections with headings', function () {
-    $export = new CollectionExportWithHeadings();
+    $export = new CollectionExportWithHeadings;
     $tempFile = LaravelCsv::export($export);
     $results = array_map('str_getcsv', file($tempFile->getLocalPath()));
     expect($results)->toBeArray()

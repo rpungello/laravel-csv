@@ -2,7 +2,6 @@
 
 namespace Rpungello\LaravelCsv\Tests\Exports;
 
-use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class ArrayExportWithHeadings extends ArrayExport implements WithHeadings
