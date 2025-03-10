@@ -6,9 +6,8 @@ use Illuminate\Support\Arr;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class NestedArrayExport implements WithMapping, FromArray
+class NestedArrayExport implements FromArray, WithMapping
 {
-
     public function array(): array
     {
         return [
@@ -19,7 +18,7 @@ class NestedArrayExport implements WithMapping, FromArray
                     ['line_number' => 'line 2'],
                     ['line_number' => 'line 3'],
                 ],
-            ]
+            ],
         ];
     }
 

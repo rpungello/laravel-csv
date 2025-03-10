@@ -44,10 +44,7 @@ class Writer
     }
 
     /**
-     * @param $export
-     * @param resource $fh
-     * @param mixed $row
-     * @return void
+     * @param  resource  $fh
      */
     private function writeRow($export, $fh, mixed $row): void
     {
